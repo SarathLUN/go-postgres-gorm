@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/akhil/go-fiber-postgres/models"
-	"github.com/akhil/go-fiber-postgres/storage"
+	"github.com/SarathLUN/go-postgres-gorm/models"
+	"github.com/SarathLUN/go-postgres-gorm/storage"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"gorm.io/gorm"
@@ -115,9 +115,9 @@ func (r *Repository) GetBookByID(context *fiber.Ctx) error {
 
 func (r *Repository) SetupRoutes(app *fiber.App) {
 	api := app.Group("/api")
-	api.Post("/create_books", r.CreateBook)
+	api.Post("/create_book", r.CreateBook)
 	api.Delete("delete_book/:id", r.DeleteBook)
-	api.Get("/get_books/:id", r.GetBookByID)
+	api.Get("/book/:id", r.GetBookByID)
 	api.Get("/books", r.GetBooks)
 }
 
